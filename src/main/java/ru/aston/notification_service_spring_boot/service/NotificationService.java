@@ -1,14 +1,12 @@
 package ru.aston.notification_service_spring_boot.service;
 
 import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.aston.notification_service_spring_boot.exception.WrongEmailException;
 import ru.aston.notification_service_spring_boot.exception.WrongEventException;
@@ -58,13 +56,12 @@ public class NotificationService {
         LOGGER.info("trying to send notification service level {}", event);
         try {
             NotificationDetails details = parseMessage(event);
-            MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
-            helper.setFrom("itclasszoom25@mail.ru");
-            helper.setTo(details.getEmail());
-            helper.setSubject(details.getSubject());
-            helper.setText(details.getMessage());
-            mailSender.send(message);
+            SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+            simpleMailMessage.setFrom("itclasszoom25@mail.ru");
+            simpleMailMessage.setTo(details.getEmail());
+            simpleMailMessage.setSubject(details.getSubject());
+            simpleMailMessage.setText(details.getMessage());
+            mailSender.send(simpleMailMessage);
             LOGGER.info("notification for {} with subject {} was sent successfully service level", details.getEmail(), details.getSubject());
         }catch (Exception e){
             LOGGER.error("failed send notification service level: {}", e.getMessage());
