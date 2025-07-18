@@ -44,7 +44,7 @@ class NotificationServiceImplTest {
 
         assertEquals("CREATE", simpleMailMessage.getSubject());
         assertEquals("itclasszoom33@mail.ru", simpleMailMessage.getTo()[0]);
-        assertEquals(NotificationServiceImpl.CREATE_MESSAGE, simpleMailMessage.getText());
+        assertEquals(notificationService.CREATE_MESSAGE, simpleMailMessage.getText());
     }
 
     @Test
@@ -55,7 +55,7 @@ class NotificationServiceImplTest {
 
         assertEquals("CREATE", details.getSubject());
         assertEquals("itclasszoom33@mail.ru", details.getEmail());
-        assertEquals(NotificationServiceImpl.CREATE_MESSAGE, details.getMessage());
+        assertEquals(notificationService.CREATE_MESSAGE, details.getMessage());
     }
 
     @Test
@@ -66,7 +66,7 @@ class NotificationServiceImplTest {
 
         assertEquals("DELETE", details.getSubject());
         assertEquals("itclasszoom33@mail.ru", details.getEmail());
-        assertEquals(NotificationServiceImpl.DELETE_MESSAGE, details.getMessage());
+        assertEquals(notificationService.DELETE_MESSAGE, details.getMessage());
     }
 
     @Test
