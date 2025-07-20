@@ -30,6 +30,7 @@
         <java.version>17</java.version>
         <greenmail.version>2.1.4</greenmail.version>
         <aspectjweaver.version>1.9.7</aspectjweaver.version>
+        <spring-cloud.version>2025.0.0</spring-cloud.version>
     </properties>
     <dependencies>
         <dependency>
@@ -77,9 +78,24 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectjweaver.version}</version> <!-- Актуальная версия -->
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
 
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
