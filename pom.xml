@@ -28,6 +28,8 @@
     </scm>
     <properties>
         <java.version>17</java.version>
+        <greenmail.version>2.1.4</greenmail.version>
+        <aspectjweaver.version>1.9.7</aspectjweaver.version>
     </properties>
     <dependencies>
         <dependency>
@@ -61,7 +63,7 @@
         <dependency>
             <groupId>com.icegreen</groupId>
             <artifactId>greenmail</artifactId>
-            <version>2.1.4</version>
+            <version>${greenmail.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -73,7 +75,7 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.9.7</version> <!-- Актуальная версия -->
+            <version>${aspectjweaver.version}</version> <!-- Актуальная версия -->
         </dependency>
 
 
