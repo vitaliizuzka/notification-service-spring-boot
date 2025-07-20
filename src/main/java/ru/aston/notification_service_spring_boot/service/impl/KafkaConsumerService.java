@@ -18,8 +18,8 @@ public class KafkaConsumerService {
         this.notificationService = notificationService;
     }
 
-    @KafkaListener(topics = "${kafka.topics.user-events}")
     @Async
+    @KafkaListener(topics = "${kafka.topics.user-events}")
     public void listenUserCreateDeleteEvents(String event) throws MessagingException {
         LOGGER.info("receive message from kafka thread : {}", Thread.currentThread().getName());
         notificationService.sendNotification(event);

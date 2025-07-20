@@ -27,7 +27,7 @@ public class NotificationServiceImpl implements ru.aston.notification_service_sp
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     public final String CREATE_MESSAGE = "Здравствуйте! Ваш аккаунт успешно создан";
     public final   String DELETE_MESSAGE = "Здравствуйте! Ваш аккаунт был удалён.";
-    @Value("${spring.mail.username}")
+    @Value("${mail.from.address}")
     public String MAIL_SENDER;
     private final JavaMailSender mailSender;
 
@@ -37,7 +37,7 @@ public class NotificationServiceImpl implements ru.aston.notification_service_sp
     }
 
     //   Формат: "EVENT:email"
-    public NotificationDetails parseMessage(String parseEvent) {
+    private NotificationDetails parseMessage(String parseEvent) {
         NotificationDetails details = new NotificationDetails();
         String[] parts = parseEvent.split(":");
         if (parts.length != 2)
